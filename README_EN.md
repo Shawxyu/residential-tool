@@ -91,6 +91,7 @@ residential-tool/
 
 - **On GitHub (source repo):** this repo is the full source. Anyone can `git clone` and run it locally as above.
 - **A public "open-and-use" link for others:** GitHub itself only hosts code and cannot run the Python backend; GitHub Pages serves static front-ends only, and because the computation depends on the backend, a Pages-only deploy shows "engine not connected". To let people open it without local setup, use a host that runs Python — e.g. **Hugging Face Spaces** (free, native Python web services, near-zero changes for this FastAPI app), Render, Railway, or your own server. Keep the code on GitHub and point the host at the repo.
+- **Live demo (temporary hosting):** https://c4665e1afb7b4180ada3932500d31ac3.app.workbuddy.host — temporarily hosted on WorkBuddy; open-and-use with no local setup. For a long-term stable public link, prefer one of the self-hosted options above.
 - Once your own host is live, you can take the temporary WorkBuddy link offline anytime from "Published Apps".
 
 ## Data & licensing
