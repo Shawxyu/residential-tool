@@ -94,9 +94,8 @@ residential-tool/
 ## 部署说明
 
 - **放到 GitHub（代码仓库）**：本仓库就是完整源码，任何人 `git clone` 后按「快速开始」即可本地运行。
-- **给别人一个「打开就能用」的公网链接**：GitHub 本身只能托管代码，不能运行 Python 后端；GitHub Pages 也只能托管静态前端，而本工具的计算依赖后端服务，因此纯 Pages 部署会出现「连不上引擎」。要让他人无需本地配置就能打开，需要能运行 Python 的托管服务，例如 **Hugging Face Spaces**（免费、原生支持 Python Web 服务，与本工具几乎零改动）、Render、Railway 或自有服务器。代码照常放在 GitHub，托管服务拉取仓库启动即可。
-- **在线演示（临时托管）**：https://c4665e1afb7b4180ada3932500d31ac3.app.workbuddy.host —— 由 WorkBuddy 临时托管，打开即用、无需本地配置。如需长期稳定的公开链接，建议改用上面任一独立托管服务。
-- 上线自有托管后，可随时在 WorkBuddy「我发布的应用」里把临时链接下线。
+- **一个「打开就能用」的公网链接**：GitHub 本身只能托管代码，不能运行 Python 后端；GitHub Pages 也只能托管静态前端，而本工具的计算依赖后端服务，因此纯 Pages 部署会出现「连不上引擎」。要让他人无需本地配置就能打开，需要能运行 Python 的托管服务。代码照常放在 GitHub，托管服务拉取仓库启动即可。
+- **在线演示（临时托管）**：https://c4665e1afb7b4180ada3932500d31ac3.app.workbuddy.host —— 由 WorkBuddy 临时托管，打开即用、无需本地配置。
 
 ## 数据来源与合规
 
