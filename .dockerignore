@@ -1,0 +1,7 @@
+.git
+server/cache
+data/cache
+data/output
+data/basemap/raw
+*.pyc
+__pycache__
