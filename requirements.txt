@@ -1,0 +1,28 @@
+# 深圳住区形态分析工具 —— 依赖清单
+# 安装：python -m pip install -r requirements.txt
+
+# 地理数据处理
+geopandas>=0.14
+shapely>=2.0
+pyproj>=3.4
+osmnx>=1.9
+folium>=0.14
+
+# 数据分析
+pandas>=1.5
+numpy>=1.23
+scipy>=1.9
+scikit-learn>=1.2
+
+# 绘图
+matplotlib>=3.6
+seaborn>=0.12
+
+# Web 服务
+fastapi>=0.100
+uvicorn[standard]>=0.23
+python-multipart>=0.0.6
+
+# 文件格式
+openpyxl>=3.1
+pyogrio>=0.7

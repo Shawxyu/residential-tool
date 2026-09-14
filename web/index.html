@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="0CkVBAATOZ6KSs5hXtC1BU">
+<head data-page-node-id="LGDv5qIZ3xBDqan6qdXoEu">
+<meta charset="UTF-8" data-page-node-id="8Kuzqzybp6AlCj1cx6Icrv">
+<meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="7FpiIZCx72iNE35pCuXaWv">
+<title>深圳住区形态分析工具</title>
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css" data-page-node-id="f21gK6CBODvOWwb7epQCod">
+<link rel="stylesheet" href="css/style.css?v=20260914a" data-page-node-id="Xtn8dTPMyDHMGMPgYlGDhp">
+</head>
+<body data-page-node-id="UJKECeFUKtoV4lS1Fb4lyD">
+
+<!-- 像素天际线（深圳地标剪影，页面右下角背景装饰） -->
+<div class="skyline" aria-hidden="true"></div>
+
+<!-- ============ 顶栏 ============ -->
+<div class="topbar" data-page-node-id="bRiABVvOwAH54zODKy4VVB">
+  <div class="brand" data-page-node-id="1A0kbY5CVnJ6OqnqjAFGB3">
+    <b data-page-node-id="wYGIm8FeA9an9WuiqO4oRR">深圳住区形态分析工具</b>
+    <span data-page-node-id="e0taQ1yqLnIije4FHVSJHt">RESIDENTIAL MORPHOLOGY TOOLKIT</span>
+  </div>
+  <div class="spacer" data-page-node-id="niUbGeE1FUKCR2lgzkmrCH"></div>
+  <div class="conn" data-page-node-id="lGAa4bPxNFu3HquHUezMGZ">
+    <span class="dot" id="connDot" data-page-node-id="Ld3FNhyzC4cfms2Z5aqdh9"></span>
+    <span id="connText" data-page-node-id="BtF6nBD7ZhB5dOn00wEZb6">正在检测本地引擎…</span>
+  </div>
+  <button class="btn ghost mini" id="btnNetTest">网络自检</button>
+  <button class="btn ghost mini" id="btnEngineCfg" data-page-node-id="d77s2b3eu2FFjtmjgaMsoj">引擎设置</button>
+</div>
+
+<!-- ============ 主体 ============ -->
+<div class="shell" data-page-node-id="5XjAGhD6gu9SIqsMhPvhF5">
+
+  <!-- ---------- 左侧步骤 ---------- -->
+  <aside class="rail" data-page-node-id="sjkj7mz4j7CnBXDNa1EK0D">
+    <div class="rail-title" data-page-node-id="gSBjofnXrLZtlMzq8es0Cx">分析流程</div>
+
+    <div class="step" data-step="1" data-page-node-id="FqkfACdzxCDoDgzLK6w4jo">
+      <div class="num" data-page-node-id="8Py3ZfS91FHfAIJiUFbGAp">1</div>
+      <div class="txt" data-page-node-id="bAA1jmh9Sj2hHq70xCwlsf"><b data-page-node-id="YQEriLCAUbVHqA6QM2gJme">选择范围</b><small data-page-node-id="IJWBL0tUntZMcsQUTuVEUa">全域 / 高密度 / 自定义</small></div>
+    </div>
+    <div class="step locked" data-step="2" data-page-node-id="wj1Ac1lL0KlVxMcFcAOefr">
+      <div class="num" data-page-node-id="iGhGBxFsFhilIJF30pTT96">2</div>
+      <div class="txt" data-page-node-id="OXaLZ8kZdz5LORswQjuKmj"><b data-page-node-id="wLsZSio6hfXZeyiunR78Ha">点选地块</b><small data-page-node-id="QSEFfM3XSHb7EX6VYXuGrx">地图交互收集案例</small></div>
+    </div>
+    <div class="step locked" data-step="3" data-page-node-id="Ov8Ox7BdEGU5GY8rlLXYzB">
+      <div class="num" data-page-node-id="HRHknG9xaSKacudRlCWM3b">3</div>
+      <div class="txt" data-page-node-id="fDTtHAg89TtHOLHxqIunK9"><b data-page-node-id="mimKxv2QS5ifWzMwS3mTJ7">指标与异常</b><small data-page-node-id="KHakN8KgiCFqHC2SYi2IEy">自动计算 · 数据体检</small></div>
+    </div>
+    <div class="step locked" data-step="4" data-page-node-id="w4xsJkhmMIuS4lKJVlU80z">
+      <div class="num" data-page-node-id="c1ByRvYIRGfWHvd3bbDQ4B">4</div>
+      <div class="txt" data-page-node-id="QI1Y2pTAXPysSLSfHCs3QN"><b data-page-node-id="O4HTZqO3FUmMJwtrEpUvqf">条件筛选</b><small data-page-node-id="NJc1XJM6gTsuttnfj2GLQV">多条件组合 · 可复查</small></div>
+    </div>
+    <div class="step locked" data-step="5" data-page-node-id="b2dx0FFwa10h6zrXXLyvM9">
+      <div class="num" data-page-node-id="KOWM2iPRTfwyu8VVGxwgHr">5</div>
+      <div class="txt" data-page-node-id="yX8nYj54uLTdxNGYxIsYPl"><b data-page-node-id="dLtW0JhdlGzXAHHqlyRuCe">成果输出</b><small data-page-node-id="TJd8gAd2XG2FLhOpCSWpPm">指标表 + 平面图</small></div>
+    </div>
+    <div class="step locked" data-step="6" data-page-node-id="hrVrHVMop41SPH3DBQ49tJ">
+      <div class="num" data-page-node-id="0tzEHgp3QLnR7HrXgP3la9">6</div>
+      <div class="txt" data-page-node-id="AeBfMZfqfDaZgteFQ5lh5S"><b data-page-node-id="iJLntVul8AqZpVIqO68u9t">聚类分析</b><small data-page-node-id="sVUix4L5dLd3oyHgS0H9h3">肘部 · KMeans · 中心</small></div>
+    </div>
+    <div class="step locked" data-step="7" data-page-node-id="u3HKi8JzQwdn2DlzRuWTLk">
+      <div class="num" data-page-node-id="uu0RaxoCKJ6M09yohHFkDW">7</div>
+      <div class="txt" data-page-node-id="4hEBna4v0R90caDAoyizmA"><b data-page-node-id="zwROrKZus0DnN0L92DuBiP">科研图输出</b><small data-page-node-id="USoXNOqw5rDNfahAeF36hk">PCA · 箱线图</small></div>
+    </div>
+
+    <div class="foot" data-page-node-id="wnrNNaaW1OUmFXiCCyFPlK">
+      <div class="rail-title" style="padding:0 0 8px" data-page-node-id="BACozsZoc9aQ79JYffxGmx">运行日志</div>
+      <div class="logbox" id="logBox" data-page-node-id="mgqNuj5gRPGDOUCdbSRnsN">等待操作…</div>
+    </div>
+  </aside>
+
+  <!-- ---------- 主内容 ---------- -->
+  <main class="main" data-page-node-id="llTH9p6KVQhW38tCPRTxYc">
+
+    <!-- ========== STEP 1 ========== -->
+    <section class="panel active" data-panel="1" data-page-node-id="a0C9ztWPNSqf7iezoEwruc">
+      <div class="h" data-page-node-id="IbdmZemlHwCKDvkv2sbE6b"><h2 data-page-node-id="G3TzRNGHf7iGabedOJfcTG">Step 1 · 选择分析范围</h2>
+        <span class="sub" data-page-node-id="UZUT3ICrHgG0OCGdhGgUUa">决定候选住区地块的来源范围</span></div>
+
+      <div class="block" data-page-node-id="lIDgPyFGU6henwFGs5IxFb">
+        <h3 data-page-node-id="AYBp0sei7wrX3Ha32ouKPV">范围模式</h3>
+        <p class="hint" data-page-node-id="XnT8c6g0SvnvC0XlTtF1IT">三种模式相互独立，切换后需重新加载地块。高密度模式沿用你 ArcGIS 制作的分区掩膜。</p>
+        <div class="modes" data-page-node-id="fcoWGwmhxF9KyEhstH3JJd">
+          <div class="mode" data-mode="global" data-page-node-id="kNDKHM24QPuzz7q7A99poV">
+            <b data-page-node-id="ov4Kd9U1g9zb8eOwCLqFY5">全域住区案例</b>
+            <small data-page-node-id="blDBJzwAKnA7jy7tPrGXxj">覆盖深圳全市，候选案例最多，适合做全样本对比</small>
+          </div>
+          <div class="mode sel" data-mode="density" data-page-node-id="yc28u6a6l9BzJ1MrTnh34U">
+            <span class="tag" data-page-node-id="uyLkDWZr1HAbZcu9dcuBxO">默认</span>
+            <b data-page-node-id="CsQVRbpiTaFM0exkSgOCCW">高密度住区案例</b>
+            <small data-page-node-id="YbFdywGH9BeomDziJq4D0L">仅保留落在高密度分区掩膜内的地块，聚焦研究样本</small>
+          </div>
+          <div class="mode" data-mode="custom" data-page-node-id="ILxzagFPocCGhyEx00YPyi">
+            <b data-page-node-id="WFhBXzuppl9Y94H8Sly9IN">自由选取范围</b>
+            <small data-page-node-id="leth2SiKLtvPzlMjHOA6Gk">上传自制边界文件，或勾选深圳行政区自由组合</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- 高密度掩膜配置 -->
+      <div class="block" id="blkDensity" data-page-node-id="OhBFnZoZOpzyMjmp9voW2k">
+        <h3 data-page-node-id="IqCDudnnvcyyaVPSy6aCXd">高密度掩膜</h3>
+        <p class="hint" data-page-node-id="5MCFACsvoSCvqkgGUMOiKr">默认使用你现有的掩膜文件。若换用其他分区，填新路径即可。</p>
+        <div class="row" data-page-node-id="RTN9Fua8pIMWhyISCSQgml">
+          <div class="field" style="flex:1;min-width:340px" data-page-node-id="n4AhQrZ1eoddwmMrCQC2dU">
+            <label data-page-node-id="zUya57FhFDVEbCAS4QhChC">掩膜文件路径 <span class="unit" data-page-node-id="Z5zmeWcFuDVpCmJyJbujD8">GeoJSON</span></label>
+            <input type="text" id="maskPath" value="C:/Users/x/Desktop/Be_careful/density_zone_mask.json" data-page-node-id="CKuoICqsm2gDF6fUdluhqG">
+          </div>
+        </div>
+      </div>
+
+      <!-- 自定义范围 -->
+      <div class="block" id="blkCustom" style="display:none" data-page-node-id="FC1fQ2DiL35UjWX8GRIBOf">
+        <h3 data-page-node-id="OdYyhYKhfqXNEsQNHPEoc3">自定义范围</h3>
+        <p class="hint" data-page-node-id="3mJ5ZpHvtPoQNZPCtg6tVp">两种方式二选一：上传边界文件，或直接勾选行政区。勾选行政区需联网获取边界。</p>
+
+        <div class="field" style="margin-bottom:14px" data-page-node-id="uYKDST2FXCcpNOaysDgNab">
+          <label data-page-node-id="aE3th0di3N9XUUvCVMrOgm">方式 A · 上传边界文件 <span class="unit" data-page-node-id="nUUFIK4FVAWgDK2rYXrN5r">支持 GeoJSON / JSON / ZIP(Shapefile)</span></label>
+          <input type="file" id="boundaryFile" accept=".json,.geojson,.zip" data-page-node-id="FBv8gz67d4SXzoaxrfssAM">
+          <div id="boundaryInfo" style="font-size:11.5px;color:var(--ink-3);margin-top:6px" data-page-node-id="hrFzk6kNF73bQCkGwYSJDy"></div>
+        </div>
+
+        <div class="field" data-page-node-id="LnGTEV97IooMSgO2TqWgAF">
+          <label data-page-node-id="45eNNgkJLPYvhwKbX47qUo">方式 B · 勾选深圳行政区</label>
+          <div class="featgrid" id="districtGrid" style="margin-top:6px" data-page-node-id="w42ygp3FEFtZVE20Bb3rY8"></div>
+        </div>
+      </div>
+
+      <!-- 面积阈值 -->
+      <div class="block" data-page-node-id="VDRYfSVss68rT9rfKAS1cv">
+        <h3 data-page-node-id="0E92N2CnMLN7fAbX32ojas">地块面积阈值</h3>
+        <p class="hint" data-page-node-id="lRo7BBW3H9ltb8FwFurt2A">OSM 地块面积过大或过小都不具备住区代表性，先按面积过滤可显著减少后续计算量。</p>
+        <div class="row" data-page-node-id="6hGbARmkJgwQjyF2Tu5QRK">
+          <div class="field" data-page-node-id="zpVFPQMpvcwURTDZ6HxZ8H">
+            <label data-page-node-id="uM5z7WqElwvK0LEbySN6zB">最小面积 <span class="unit" data-page-node-id="c1A7Gp4shmpFV5J7kypO48">㎡</span></label>
+            <input type="number" id="minArea" value="10000" step="1000" data-page-node-id="0EXdJuRbH42Npuz9oLgTuv">
+          </div>
+          <div class="field" data-page-node-id="V4kDVY8C9pxQaL4hdpO8e1">
+            <label data-page-node-id="hOoTCLfKbW0WbnJS7g7H3c">最大面积 <span class="unit" data-page-node-id="MUZeKTRjqF2nCMAPvJNQXn">㎡</span></label>
+            <input type="number" id="maxArea" value="500000" step="10000" data-page-node-id="V8YUhaXHlkngGUVIv0D0zJ">
+          </div>
+          <div class="field" data-page-node-id="JQSx1YFGnOp8q8yM6W8N6P">
+            <label data-page-node-id="F1DkDBfX3XzkEmLJJnKrzi">数据缓存</label>
+            <select id="useCache" data-page-node-id="JB4eMTHfptGwLrmqL1JRRL">
+              <option value="true" selected data-page-node-id="AzAKcxqvPBA47vDbUlHUt1">优先使用本地缓存（快）</option>
+              <option value="false" data-page-node-id="cWGJLXCHCZJeVrDF7VOzdC">强制重新下载（最新）</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="btnrow" data-page-node-id="qkDP77RfbS6znmZuSPkgKG">
+        <button class="btn" id="btnLoadParcels" data-page-node-id="d4cLnsaBb7SlXwztiAqGGM">加载候选地块</button>
+        <span style="font-size:11.5px;color:var(--ink-3)" id="loadHint" data-page-node-id="UR2mat8AdTPr1AqQG0Mwqa"></span>
+      </div>
+    </section>
+
+    <!-- ========== STEP 2 ========== -->
+    <section class="panel" data-panel="2" data-page-node-id="WricKcHqy63Q0Z4hGmQfRA">
+      <div class="h" data-page-node-id="0XQDAmiHfYdVrNRJwPF8jZ"><h2 data-page-node-id="xVrqHx9UvDJpFfe6ZK3tCg">Step 2 · 点选住区地块</h2>
+        <span class="sub" data-page-node-id="BMj9OuUaOvkCtAuoiBWFJu">点击地图地块收集案例，导出后进入指标计算</span></div>
+
+      <div class="stats" style="margin-bottom:14px" data-page-node-id="iOvcH948aIdlEeBHF5B1hF">
+        <div class="stat" data-page-node-id="SacDs9VuqBAu8xknFni3xr"><div class="k" data-page-node-id="QCp4XbyYM8RZl0Xn6EJsG3">候选地块</div><div class="v" id="s2Total" data-page-node-id="xifvbYoHXwlMJFsXB8krWc">0</div></div>
+        <div class="stat" data-page-node-id="M9ZYE0x2svH9cYFW9B8EYR"><div class="k" data-page-node-id="a0QGzUIyfPJUvXp6l3c7aF">已选案例</div><div class="v" id="s2Picked" data-page-node-id="3Z7OpFbNqnEdMeDeXyCviC">0</div></div>
+        <div class="stat" data-page-node-id="GHlayoc6DkuKZE0mOnookJ"><div class="k" data-page-node-id="pbIPWOhDjfQRrK7mnMsnG1">已选总面积</div><div class="v" id="s2Area" data-page-node-id="zbCrKhXkBpqxobe1fnHGDI">0<small data-page-node-id="KB9dCPamAVPTn3pMFxdPVZ">㎡</small></div></div>
+        <div class="stat" data-page-node-id="xmOcFQOIUg0jwDYYUd6ghn"><div class="k" data-page-node-id="fOdlVL920BNLw4lBcJpLdL">当前范围</div><div class="v" id="s2Scope" style="font-size:13px" data-page-node-id="UQ8xMchzq7QzPMouVDU2n5">—</div></div>
+      </div>
+
+      <div id="map" data-page-node-id="hrpWf3ZSmfcyhD1cnnerhD">
+        <div class="map-basemap" data-page-node-id="MapBaseSel01">
+          <select id="tileSel" title="底图" data-page-node-id="TileSel01">
+            <option value="local">底图：本地矢量（离线可用）</option>
+            <option value="osm">底图：OSM 街道（在线）</option>
+            <option value="none">底图：无（纯矢量）</option>
+          </select>
+          <button id="btnBasemapRetry" class="mini" title="重新加载底图" data-page-node-id="BaseRetry01">↻</button>
+        </div>
+        <div class="map-legend" data-page-node-id="nkQkxlo9JGrJwXx8CeUfAD">
+          <div data-page-node-id="CKGbJxgqvGBYM5XnmYmQRX"><span class="sw" style="background:rgba(255,196,107,.30);border-color:rgba(255,196,107,.7)" data-page-node-id="ADtsOAC7aZiaxMsZzU6rJp"></span>居住地块</div>
+          <div data-page-node-id="bgINRsvNDosHgm1Dg2GE1V"><span class="sw" style="background:rgba(217,79,61,.34);border-color:rgba(217,79,61,.8)" data-page-node-id="8i1heqIHETSFtzLcAcaupS"></span>已选案例</div>
+          <div id="lgMask" style="display:none" data-page-node-id="sj2nlNimroJ3LVnO9rxB8g"><span class="sw" style="background:rgba(217,79,61,.16);border:1.5px dashed #d94f3d" data-page-node-id="DZgL42JD918cjFAFXgR3Cu"></span>高密度分区</div>
+        </div>
+      </div>
+
+      <div class="btnrow" data-page-node-id="vFbRTaGvsbC5WOCMOjaDFS">
+        <button class="btn" id="btnPickAll" data-page-node-id="DFo1INGTQLrSP76kCAA5me">全选当前视野</button>
+        <button class="btn ghost" id="btnPickNone" data-page-node-id="Ng3rvXSDBo0AntjZAiZJZq">清空选择</button>
+        <button class="btn ghost" id="btnToStep3" data-page-node-id="5cFxnBq797zL9SaFdAxYPW">下一步：计算指标</button>
+      </div>
+    </section>
+
+    <!-- ========== STEP 3 ========== -->
+    <section class="panel" data-panel="3" data-page-node-id="gWGlEtgDf4ti8icqxEAKJY">
+      <div class="h" data-page-node-id="mEfXACVE8exdUh6L4KmNxR"><h2 data-page-node-id="95xpBVIk3HyPl5xeibI0SP">Step 3 · 经济技术指标与异常体检</h2>
+        <span class="sub" data-page-node-id="PCPrjhLe1ZiMewxBHYWH8k">中间表默认仅在此处呈现，用于复查数据质量</span></div>
+
+      <div class="btnrow" style="margin:0 0 12px;align-items:center">
+        <label style="font-size:12.5px;color:var(--ink-2);display:flex;align-items:center;gap:8px">
+          容积率口径
+          <select id="farMode" style="font-size:12.5px;padding:4px 8px">
+            <option value="shrunk">近似计容 FAR（×折减系数，贴近官方公布口径）</option>
+            <option value="geometric">几何 FAR（Σ基底×层数 / 用地，未折减）</option>
+          </select>
+        </label>
+        <span style="font-size:11.5px;color:var(--ink-3)" id="farModeHint"></span>
+      </div>
+
+      <div id="anomalyNote" data-page-node-id="Whn7FEuIaowFFNwJ0wFniA"></div>
+
+      <div class="stats" style="margin-bottom:14px" id="s3Stats" data-page-node-id="BFqA1mq1dfE81FLUvBPGDd"></div>
+
+      <div class="block" data-page-node-id="sjYFPZjqIXMtRKkbTDLecZ">
+        <h3 data-page-node-id="fW7RWtCTZH2EDsACtZeBAq">指标表</h3>
+        <p class="hint" data-page-node-id="0l8CpClSy7jzNbFlyOtXul">
+          红色行 = 严重异常（如建筑密度 &gt; 1，通常由 OSM 边界识别问题导致，本工具已按地块边界裁剪建筑修正）；
+          黄色行 = 需留意。可勾选行后批量剔除。
+        </p>
+        <div class="btnrow" style="margin:0 0 10px" data-page-node-id="AF19sf5DEct72HR9cqew7c">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2)" data-page-node-id="HXnoTtaayJjxZRhDW2kACo">
+            <input type="checkbox" id="onlyAnomaly" data-page-node-id="jlT99siDizRPBGqCAKjKEQ"> 只看异常
+          </label>
+          <button class="btn mini ghost" id="btnRemoveSel" data-page-node-id="M61j0bou6pEqk2iESF7Wtm">剔除勾选行</button>
+          <button class="btn mini ghost" id="btnRestore" data-page-node-id="J5laINpbFQMIB6C4gz9Q9y">恢复全部</button>
+          <span style="font-size:11.5px;color:var(--ink-3)" id="s3PickHint" data-page-node-id="4Ima5mWD84RkkdRXbmEeWi"></span>
+        </div>
+        <div class="tablewrap" data-page-node-id="yKbAa21HazJrFqhUUnbiLE"><table id="tblMetrics" data-page-node-id="AttX8haa01x0cVyf8I4uuW"></table></div>
+      </div>
+
+      <div class="block" data-page-node-id="adjBlock01">
+        <h3 data-page-node-id="adjH01">指标表（人工修正）</h3>
+        <p class="hint" data-page-node-id="adjHint01">
+          上方为自动计算<b>原表</b>（只读，不参与修改）；下方为<b>当前表</b>，可在「平均层数 / 最高层数 / 容积率」单元格上
+          <b>双击修改</b>，修改后容积率、总建筑面积等派生指标即时重算并在表内显示，可与上方原表对照核对。
+          已修改的行标注「已修正」，可一键撤销。
+        </p>
+        <div class="tablewrap" data-page-node-id="adjTW01" style="margin-top:6px"><table id="tblAdjusted" data-page-node-id="adjT01"></table></div>
+      </div>
+
+      <div class="btnrow" data-page-node-id="OcRvJnGoYTz8MB46H5JhRD">
+        <button class="btn" id="btnToStep4" data-page-node-id="6ZQDErWZ9yQGNmeEiCCN6q">下一步：条件筛选</button>
+      </div>
+    </section>
+
+    <!-- ========== STEP 4 ========== -->
+    <section class="panel" data-panel="4" data-page-node-id="yRMZKe69ygrnk51WGXScs3">
+      <div class="h" data-page-node-id="YmMqUTzuPMmV9PrYi5NLTD"><h2 data-page-node-id="8HhtzhpDqBnPUyfGHNFyIJ">Step 4 · 条件筛选</h2>
+        <span class="sub" data-page-node-id="i83vgLYLeAdtaZQLbEdoaH">单条件、多条件组合、区间区间均可</span></div>
+
+      <div class="block" data-page-node-id="SnSjrhULgXcegfwMQkId0E">
+        <h3 data-page-node-id="DCqckxs246rslt3GOIfH5M">筛选条件</h3>
+        <p class="hint" data-page-node-id="NuaejDf2sdqEOfwRGHeOaF">
+          每条条件形如「指标 · 运算符 · 数值」。多条件时可选择「同时满足」(AND) 或「满足其一」(OR)。
+          例如：容积率 &gt; 3.2；或 建筑密度 between 0.2 ~ 0.35；或 容积率 &gt; 3.2 且 建筑密度 &lt; 0.35。
+        </p>
+
+        <div class="row" style="margin-bottom:12px" data-page-node-id="JoLtGF6gr6IPEExKknyDB5">
+          <div class="field" data-page-node-id="B8XeQEJWTZZ23iqsOhHdKe">
+            <label data-page-node-id="HlxCHHpnH5UCAYnaE8xWaV">快速预设</label>
+            <select id="preset" data-page-node-id="NwE9SxbubvwXqtdbgHYtWU">
+              <option value="" data-page-node-id="eAPw4EldDBcGy2qbosg8Xl">— 选择预设条件 —</option>
+              <option value="far32" data-page-node-id="QFwTGPWF00ZQBV9cbeLST4">容积率 &gt; 3.2</option>
+              <option value="bcr30" data-page-node-id="gU0BHJ8jfw1YCOl7pHs2nG">建筑密度 &gt; 0.30</option>
+              <option value="far32_bcr35" data-page-node-id="QPEvF5nYe20ITQSoVSVsSO">容积率 &gt; 3.2 且 建筑密度 &lt; 0.35</option>
+              <option value="far25_bcr30" data-page-node-id="VBgDCtF4RTRLQJFgH0T0ed">容积率 between 2.5~5 且 建筑密度 &gt; 0.25</option>
+              <option value="high18" data-page-node-id="iLosRatWZ20HKIQpJO2Ggm">高层占比 &gt; 0.5</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom:14px;align-items:flex-end" data-page-node-id="fsSelRow01">
+          <div class="field" data-page-node-id="fsSelField01">
+            <label data-page-node-id="fsSelLbl01">筛选数据源</label>
+            <select id="filterSource" data-page-node-id="fsSel01">
+              <option value="current" selected>指标表（人工修正）— 用修正后数据</option>
+              <option value="baseline">指标表（原表）— 用自动计算原值</option>
+            </select>
+          </div>
+          <span style="font-size:11.5px;color:var(--ink-3);padding-bottom:8px;line-height:1.6">
+            修改过层数 / 容积率后，建议选「人工修正」以保证筛选口径一致；选「原表」则忽略人工修正。
+          </span>
+        </div>
+
+        <div id="condList" data-page-node-id="yyV0Q9E1KzgA1MZAzyYL6U"></div>
+        <div class="btnrow" style="margin-top:6px" data-page-node-id="xVrQg0KGFNst5Y5ksToG3f">
+          <button class="btn mini ghost" id="btnAddCond" data-page-node-id="GoAyUlo5v2dU8X9h22m60q">+ 添加条件</button>
+        </div>
+
+        <div class="logicbar" data-page-node-id="FuZ0T8YFYIIPGiUEX7BAGN">
+          <span data-page-node-id="xiJthDRb19rlJNj7oF8fpW">条件关系：</span>
+          <span class="pill on" data-logic="and" data-page-node-id="TBrEAORSQLnRnL3qnufObT">同时满足 (AND)</span>
+          <span class="pill" data-logic="or" data-page-node-id="wGKdg4thcCw2aQr9ejUbDa">满足其一 (OR)</span>
+        </div>
+
+        <div class="logicbar" style="margin-top:14px" data-page-node-id="wDe2Zy66j0KL8vhmgg4UA1">
+          <label style="display:flex;align-items:center;gap:6px" data-page-node-id="acxUL9EGWY8JdvYfVvWbvK">
+            <input type="checkbox" id="excludeAnomaly" checked data-page-node-id="8oQgy4bX9gGkxbBUNmfiCy"> 自动排除异常数据
+          </label>
+          <select id="maxAnomalyLevel" style="min-width:180px" data-page-node-id="cJJNxzOXx1q3VTKbN8Rcew">
+            <option value="0" data-page-node-id="SXoKm28EB0SDcDHfJsBpQh">仅保留完全正常（最严格）</option>
+            <option value="1" selected data-page-node-id="1UvQmgRzB1RObATCCh7A8p">排除严重异常，保留警告（推荐）</option>
+            <option value="2" data-page-node-id="ysiAgI8DgbEYMqGhDXcEQa">全部保留（不排除任何异常）</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btnrow" data-page-node-id="0QaGzKlWSrsI6HekhuTpCM">
+        <button class="btn" id="btnRunFilter" data-page-node-id="Q7OGaz6tZ4SzGBrxEMw1CT">执行筛选</button>
+        <button class="btn ghost" id="btnFilterReset" data-page-node-id="H5AeBPWB3ohDQFWygVnGOE">重置条件</button>
+      </div>
+
+      <div id="filterResult" style="margin-top:18px" data-page-node-id="Yn9xl5TxJiHaZnmFZ8eGhf"></div>
+    </section>
+
+    <!-- ========== STEP 5 ========== -->
+    <section class="panel" data-panel="5" data-page-node-id="CxLGYoXG5QuP6vCZVeSaHC">
+      <div class="h" data-page-node-id="nYBthSpR4BdNX1g2zrpsle"><h2 data-page-node-id="v4kf6Cw0ujIdyGTAmZpilb">Step 5 · 成果输出</h2>
+        <span class="sub" data-page-node-id="aRvmJN0kbZSFcKQtFZU8zo">指标表与平面示意图同时产出，可导出到本地</span></div>
+
+      <div class="note" data-page-node-id="fsN2nHP3wa66Y80QUvFz6I">
+        确认案例无误后点击生成。平面图为建筑黑色填充 + 红色用地红线 + 灰色道路，300dpi，可直接用于论文。
+      </div>
+
+      <div class="block" data-page-node-id="UHur9MxdCG1qlO8vuscjMo">
+        <h3 data-page-node-id="BLpwkwIJpSNObo0LGe5J0y">已确认案例</h3>
+        <div class="stats" style="margin-top:8px" id="s5Stats" data-page-node-id="ENEnlgWlnLfzHxCqUmzNpl"></div>
+      </div>
+
+      <div class="btnrow" data-page-node-id="Sf9wQ2Urn6ez6gMzzLHuPo">
+        <button class="btn" id="btnGenPlans" data-page-node-id="wELMuHmuuUMDt0jvLPoX9A">生成指标表与平面图</button>
+        <button class="btn ghost" id="btnExportMetrics" disabled data-page-node-id="gIa3RXNIhGEei8sBS7VTFW">导出指标表 CSV</button>
+        <button class="btn ghost" id="btnDownloadZip" disabled data-page-node-id="xBCHA2l8BGKLBKvPGblCm4">打包下载全部成果</button>
+      </div>
+
+      <div id="planGallery" style="margin-top:18px" data-page-node-id="oCt4JMG8d5EQKxmORJjFcc"></div>
+
+      <div class="btnrow" id="s5Next" style="display:none" data-page-node-id="2sSEMf2fEucSZYBK1o4GX3">
+        <button class="btn" id="btnToStep6" data-page-node-id="zJGG9Fg4JpGu4iag8yfiAS">下一步：聚类分析</button>
+      </div>
+    </section>
+
+    <!-- ========== STEP 6 ========== -->
+    <section class="panel" data-panel="6" data-page-node-id="k8SxCwrGeyss7zUd4iuKSI">
+      <div class="h" data-page-node-id="KCYkvlgJtInXmNEYFzeUBd"><h2 data-page-node-id="JjLcvPxQs9mC5zB7gaxS15">Step 6 · 聚类分析</h2>
+        <span class="sub" data-page-node-id="nYMD9YDLUBd8DwswWJXy7F">自选聚类指标 · 肘部法定 K · 聚类与中心</span></div>
+
+      <div class="block" data-page-node-id="xQ6ngLtFaDRKsfzbHzqlHw">
+        <h3 data-page-node-id="JJO9pGk8tfPdgmGOPVLrw6">① 选择聚类指标</h3>
+        <p class="hint" data-page-node-id="CLerUVE0l7EAdu1oRYHvQn">勾选参与聚类的指标。指标间量纲不同，工具会自动做标准化。</p>
+        <div class="featgrid" id="featGrid" data-page-node-id="9RvsA5ocWgGnCty3Z1Xjjr"></div>
+        <div class="btnrow" style="margin-top:12px" data-page-node-id="1ilMJpcFhPMPH2xSEA4b4N">
+          <button class="btn mini ghost" id="btnFeatDefault" data-page-node-id="J0gVtdrcdoaFc0MzIm1cer">恢复推荐组合</button>
+        </div>
+      </div>
+
+      <div class="block" data-page-node-id="QnX0RzP0fEQN1jYBVd3It1">
+        <h3 data-page-node-id="7ijeTzpKvBJpAayloIMHB0">② 肘部分析</h3>
+        <p class="hint" data-page-node-id="X5nsMtzzPyJfQd0DTJC4TT">观察 SSE 曲线的拐点来确定聚类数量 K。K 范围可自行调整。</p>
+        <div class="row" data-page-node-id="YL1bgiHwUhaGwssMoH9cRi">
+          <div class="field" data-page-node-id="2CAxu026MDBhEYnH1upqsw"><label data-page-node-id="R1xVcVWkPhiqK9i26YX9Lx">K 最小</label><input type="number" id="kMin" value="2" min="2" max="10" data-page-node-id="Zt3MP3TBXFNPWuOsWeePBb"></div>
+          <div class="field" data-page-node-id="iye8APemiV7PSMbGaFWuRr"><label data-page-node-id="obA3FFI3mV5cv9ca7xmHE1">K 最大</label><input type="number" id="kMax" value="11" min="3" max="20" data-page-node-id="N52b6JG9Vectb5taQWUGS6"></div>
+        </div>
+        <div class="btnrow" data-page-node-id="YIxsLjg0Roha0PXLhJBAuT">
+          <button class="btn" id="btnElbow" data-page-node-id="DxSml1G4HYfzxu41qU86ap">运行肘部分析</button>
+          <button class="btn ghost" id="btnElbowFig" disabled data-page-node-id="WWDLUunixNGGV2RSsrTwGt">下载肘部图 PNG</button>
+        </div>
+        <div id="elbowBox" style="margin-top:14px" data-page-node-id="x1VimKtuDC1oR4LRlcXsEB"></div>
+      </div>
+
+      <div class="block" data-page-node-id="8wGikMOXIRHs9doOotlIfM">
+        <h3 data-page-node-id="PSOdmWRdJjVwXBmUIuPSlB">③ KMeans 聚类</h3>
+        <div class="row" data-page-node-id="OlyPwMIB18ComRbHbA6gLb">
+          <div class="field" data-page-node-id="CjOF8waZa5q5Iw1gM0KQ35">
+            <label data-page-node-id="ufiGFe27SDr0w1kYQnBrnL">聚类数量 K</label>
+            <input type="number" id="kVal" value="5" min="2" max="20" data-page-node-id="N67nLerzKy1yDZ5K2ESWHN">
+          </div>
+        </div>
+        <div class="btnrow" data-page-node-id="PV7oIE65vC4MIz96WEVCOa">
+          <button class="btn" id="btnCluster" data-page-node-id="vegRIiWsCsgsHa0nGIFIWH">开始聚类</button>
+          <button class="btn ghost" id="btnExportCluster" disabled data-page-node-id="QHyECzCMn6CWiNb0qo0E6e">导出聚类结果</button>
+        </div>
+        <div id="clusterBox" style="margin-top:14px" data-page-node-id="1DDPngMc9shjKutgBbBY4D"></div>
+      </div>
+
+      <div class="block" data-page-node-id="WBBBpdNOn673QHwkKkFHS2">
+        <h3 data-page-node-id="NNvnTlIJBpBxapfDZAHipG">④ 聚类中心与典型案例</h3>
+        <p class="hint" data-page-node-id="7IqhkL1bPeFD6Lmp7MdMyD">每个类可查看离聚类中心最近的典型案例，用于选取论文插图样本。</p>
+        <div class="field" style="margin-bottom:12px" data-page-node-id="eJ4ZZBFBGK7vVDmNZrphhb">
+          <label data-page-node-id="KrM4x39AKmA2xzuR4NwXYp">选择类别</label>
+          <select id="caseCluster" style="min-width:200px" data-page-node-id="UNOMSHnEgeiiEztbSfBZj5"></select>
+        </div>
+        <button class="btn mini" id="btnCases" data-page-node-id="hPety8bgJtF6GaEg47biOR">查看典型案例</button>
+        <div id="casesBox" style="margin-top:14px" data-page-node-id="rJCRQry4hbjWoj04fxVCyD"></div>
+      </div>
+
+      <div class="btnrow" data-page-node-id="KBJJ8ug31QnsET73ZPuQel">
+        <button class="btn" id="btnToStep7" data-page-node-id="8v4OXJgBEz2NViQLN9xE9V">下一步：科研图输出</button>
+      </div>
+    </section>
+
+    <!-- ========== STEP 7 ========== -->
+    <section class="panel" data-panel="7" data-page-node-id="dQlnf5AUWWS0mi9hB6EXOe">
+      <div class="h" data-page-node-id="lF1l3Ngeio8CxBxbrn0kfP"><h2 data-page-node-id="8p1gIBSlYEd4CaqRrPdlgh">Step 7 · 科研图输出</h2>
+        <span class="sub" data-page-node-id="KREtfUpuhIxczO7FQeVglA">PCA 主成分分析 + 各指标箱线图</span></div>
+
+      <div class="note" data-page-node-id="Ht4w6ENt5dv58Z3FM1lY0V">
+        输出风格与你的原脚本一致（Times New Roman、Set2 配色、2σ 置信椭圆、300dpi）。
+        已修正原脚本中聚类中心被二次标准化导致位置偏移的问题。
+      </div>
+
+      <div class="block" data-page-node-id="L5bcngGA8RKOiH0ZDdvEQS">
+        <h3 data-page-node-id="RZoT8uTPHv1l5hMzFCU9CG">绘图指标</h3>
+        <p class="hint" data-page-node-id="aZpnfCiQc4t4Bb20YrrP1K">PCA 图使用下方勾选的指标进行降维；箱线图按勾选顺序依次绘制。</p>
+        <div class="featgrid" id="featGrid2" data-page-node-id="8PNcKrnahptDXnGIlDSbW3"></div>
+      </div>
+
+      <div class="btnrow" data-page-node-id="YuefUvSVH767QZU0MFt16N">
+        <button class="btn" id="btnFigure" data-page-node-id="9GFWmlbPkTV5aed8gKKHme">生成科研图</button>
+        <button class="btn ghost" id="btnFigureDl" disabled data-page-node-id="oUdN2Nu1BDeSVVcjq4dlnf">下载图片</button>
+        <button class="btn ghost" id="btnDownloadAll" data-page-node-id="i6mPxBdwv0Iw72hQsNJqxS">打包下载全部成果</button>
+      </div>
+
+      <div id="figBox" style="margin-top:18px" data-page-node-id="KqaHNVfQRgLjnTRtgtBMTA"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ 加载遮罩 ============ -->
+<div class="overlay" id="overlay" data-page-node-id="AuGUVKGAf5VSLQr6zGy2T1">
+  <div class="box" data-page-node-id="Yn1A3YS1TgdfCTOQDprkRp">
+    <div class="spin" data-page-node-id="XNKKVDImSGDYtE4V2EGMBc"></div>
+    <div class="t" id="ovTitle" data-page-node-id="qMyVpO7GeOZ0RVTm4slTbt">处理中</div>
+    <div class="s" id="ovSub" data-page-node-id="Pi3eiYimH0fU1qfwsyiHR6"></div>
+    <div class="barwrap" id="ovBarWrap" style="display:none" data-page-node-id="OvBarWrap01"><div class="bar" id="ovBar" data-page-node-id="OvBarFill01"></div></div>
+    <div class="ovpct" id="ovPct" style="display:none" data-page-node-id="OvPctText01"></div>
+  </div>
+</div>
+
+<!-- ============ 引擎设置弹窗 ============ -->
+<div class="overlay" id="cfgOverlay" data-page-node-id="KOhEFa04lp05NYlDWtzIfp">
+  <div class="box" style="text-align:left;min-width:420px" data-page-node-id="sHoGYcjNEqBU6PPH2GTBdz">
+    <div class="t" style="margin-bottom:12px" data-page-node-id="2rZVCTsm4FVBxWV6Dbx8ON">本地计算引擎地址</div>
+    <div class="field" data-page-node-id="eqR49c0bGqIowWhop8LK8u">
+      <label data-page-node-id="qNMv3om3Ck6mRIdWCdFRMK">引擎地址</label>
+      <input type="text" id="engineUrl" value="http://127.0.0.1:8765" style="width:100%" data-page-node-id="k9Pl8HUBTvEpjaA8ierYCu">
+    </div>
+    <p style="font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.7" data-page-node-id="JkudGASGg1aHi5kn0IGGOJ">
+      部署到 GitHub 后，本地仍需运行计算引擎。双击 start.bat 启动即可，默认端口 8765。
+    </p>
+    <div class="btnrow" data-page-node-id="SBMAC198TQr67yn94aOxWO">
+      <button class="btn" id="btnCfgSave" data-page-node-id="YVZsAp33OEBXW3BzXUxCak">保存并测试</button>
+      <button class="btn ghost" id="btnCfgClose" data-page-node-id="EiFpFY1CzUEMrfc09v3KD1">关闭</button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="vendor/protomaps/protomaps-leaflet.js"></script>
+<script src="js/app.js?v=20260914a"></script>
+</body>
+</html>

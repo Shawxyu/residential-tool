@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Runtime data (regenerable / large) — kept out of the repo
+data/cache/
+data/output/
+data/basemap/raw/
+server/cache/
+
+# Editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
