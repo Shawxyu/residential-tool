@@ -38,6 +38,14 @@
 | 6 聚类分析 | 肘部法 → KMeans → 中心 |
 | 7 科研图输出 | PCA + 箱线图 |
 
+<img width="1273" height="701" alt="1 选择范围" src="https://github.com/user-attachments/assets/4c8b7e77-1ba9-434f-a019-7918133a2219" />
+<img width="1271" height="701" alt="2 选择地块" src="https://github.com/user-attachments/assets/cb3f1a78-a66e-436f-ab55-9db267519ae5" />
+<img width="1271" height="697" alt="3 指标检查" src="https://github.com/user-attachments/assets/c4252599-f754-4dfb-a629-6f132f1a8ed9" />
+<img width="1273" height="700" alt="4 案例筛选" src="https://github.com/user-attachments/assets/cde8513b-df32-40f2-bf83-3e81ec394133" />
+<img width="1269" height="699" alt="5 成果核验" src="https://github.com/user-attachments/assets/3f02bd18-25fe-44b8-a596-4b2ddbe8194d" />
+<img width="1270" height="700" alt="6 聚类分析" src="https://github.com/user-attachments/assets/167f923d-f87c-4213-9112-383c108842cc" />
+<img width="1270" height="696" alt="7 科研图输出" src="https://github.com/user-attachments/assets/97243811-66e6-4776-a397-2561fc893dae" />
+
 ## 技术栈
 
 - 后端：Python + FastAPI（指标计算、筛选、聚类、出图，封装为 HTTP 接口）
